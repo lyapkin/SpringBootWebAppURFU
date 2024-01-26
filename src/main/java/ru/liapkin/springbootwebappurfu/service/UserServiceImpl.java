@@ -55,11 +55,9 @@ public class UserServiceImpl implements UserService {
 
             User user = userOpt.get();
 
-            List<String> rolesToSet = userAuthDto.getRoles().stream()
-                    .filter(r -> !user.getRoles().contains(new SimpleGrantedAuthority(r))).toList();
-            List<Role> roles = roleRepository.findByNameIn(rolesToSet);
-            user.getRoles().removeIf(r -> !rolesToSet.contains(r.getName()));
-            user.getRoles().addAll(roles);
+            user.getRoles().clear();
+            user.getRoles().addAll(roleRepository.findByNameIn(userAuthDto.getRoles()));
+
             userRepository.save(user);
 
         } else {
