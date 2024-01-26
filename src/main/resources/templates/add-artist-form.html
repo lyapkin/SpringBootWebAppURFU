@@ -17,23 +17,23 @@
 
   <hr/>
 
-  <h3>Add New Artist</h3>
+  <h3>Добавить нового исполнителя</h3>
   <hr/>
 
   <form th:action="@{/artists/save}" th:object="${artist}" method="POST">
 
-    <input type="text" th:field="*{name}" class="form-control col-4 mb-4" placeholder="Enter Name"/>
+    <input type="text" th:field="*{name}" class="form-control col-4 mb-4" placeholder="Введите имя"/>
 
     <p th:errors="*{name}" class="text-danger"
        th:if="${#fields.hasErrors('name')}"></p>
 
-    <button type="submit" class="btn btn-primary col-2">Save</button>
+    <button type="submit" class="btn btn-primary col-2">Сохранить</button>
 
     <input type="hidden" th:field="*{id}"/>
 
   </form>
   <hr/>
-  <a th:href="@{/artists/list}">Back to list</a>
+  <a th:href="@{/artists/list}">Назад к списку</a>
 </div>
 
 </body>

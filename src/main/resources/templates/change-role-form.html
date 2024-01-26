@@ -17,21 +17,21 @@
 
   <hr/>
 
-  <h3>Change User Role</h3>
+  <h3>Изменить роль пользователя</h3>
   <hr/>
 
   <form th:action="@{/users/save}" th:object="${user}" method="POST">
-    <p>
-      <input type="checkbox" name="roles" th:each="role : ${roles}" th:text="${role}" th:value="${role}" th:checked="${user.roles.contains(role)} " />
+    <p th:each="role : ${roles}">
+      <input type="checkbox" name="roles"  th:text="${role}" th:value="${role}" th:checked="${user.roles.contains(role)} " />
     </p>
-    <button type="submit" class="btn btn-primary col-2">Save</button>
+    <button type="submit" class="btn btn-primary col-2">Сохранить</button>
 
     <input type="hidden" th:field="*{id}"/>
     <input type="hidden" th:field="*{email}"/>
 
   </form>
   <hr/>
-  <a th:href="@{/users/list}">Back to list</a>
+  <a th:href="@{/users/list}">Назад к списку</a>
 </div>
 
 </body>

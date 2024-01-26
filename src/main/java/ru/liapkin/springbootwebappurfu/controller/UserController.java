@@ -37,7 +37,7 @@ public class UserController {
     }
 
     @GetMapping("/change-roles")
-    public ModelAndView showForm(@RequestParam long userId) {
+    public ModelAndView showRolesForm(@RequestParam long userId) {
         ModelAndView mav = new ModelAndView("change-role-form");
         UserAuthDto userAuthDto = userService.getUserAuthDtoById(userId);
         mav.addObject("user", userAuthDto);
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute("user") UserAuthDto userAuthDto,
+    public String saveRoles(@ModelAttribute("user") UserAuthDto userAuthDto,
                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "change-role-form";

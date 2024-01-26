@@ -17,37 +17,34 @@
 
   <hr/>
 
-  <h3>Add New Song</h3>
+  <h3>Добавить новую песню</h3>
   <hr/>
 
   <form th:action="@{/songs/save}" th:object="${song}" method="POST" >
 
-    <input type="text" th:field="*{title}" class="form-control col-4 mb-4" placeholder="Enter Title"/>
+    <input type="text" th:field="*{title}" class="form-control col-4 mb-4" placeholder="Введите название"/>
 
     <label class="form-control col-4 mb-4">
-      Artist Name:
+      Исполнитель:
       <select th:object="${artists}"  name="artistName" class="form-control col-4 mb-4" >
         <option th:each="artist : ${artists}" th:value="${artist}" th:text="${artist}" th:selected="${song.getArtistName() != null && song.getArtistName().equals(artist)}"></option>
       </select>
     </label>
 
     <label class="form-control col-4 mb-4">
-      Guest Names:
+      Гостевые исполнители:
       <select th:object="${artists}"  name="guestArtists" class="form-control col-4 mb-4" multiple>
         <option th:each="artist : ${artists}" th:value="${artist}" th:text="${artist}" th:selected="${song.getGuestArtists().contains(artist)}"></option>
       </select>
     </label>
-<!--    <input type="text" th:field="*{description}" class="form-control col-4 mb-4" placeholder="Enter Description"/>-->
 
-<!--    <input type="text" th:field="*{weight}" class="form-control col-4 mb-4" placeholder="Enter Weight"/>-->
-
-    <button type="submit" class="btn btn-primary col-2">Save</button>
+    <button type="submit" class="btn btn-primary col-2">Сохранить</button>
 
     <input type="hidden" th:field="*{id}"/>
 
   </form>
   <hr/>
-  <a th:href="@{/songs/list}">Back to list</a>
+  <a th:href="@{/songs/list}">Назад к списку</a>
 </div>
 
 </body>

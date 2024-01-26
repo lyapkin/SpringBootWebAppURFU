@@ -30,4 +30,11 @@ public class Artist {
     @ManyToMany(mappedBy = "guestArtists", fetch = FetchType.LAZY)
     private List<Song> guestSongs = new ArrayList<>();
 
+    @PreRemove
+    private void removeGuestSongsAssociation() {
+        for (Song guestSong : this.guestSongs) {
+            guestSong.getGuestArtists().remove(this);
+        }
+    }
+
 }
